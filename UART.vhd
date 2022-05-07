@@ -48,6 +48,7 @@ begin
 C1 : TX port map (CLOCK_50,TX_START,TX_BUSY,TX_DATA,UART_TX);
 C2 : RX port map(CLOCK_50,UART_RX,RX_DATA,RX_BUSY);
 
+-- Assignment is executed on the falling edge of the busy signal. As soon as the data is available	
 process(RX_BUSY)
 begin
 	if(RX_BUSY'event and RX_BUSY='0') then
