@@ -20,7 +20,7 @@ signal INDEX: integer range 0 to 9:=0;
 begin
 	process(CLK)
 	begin
-		if rising_edge(CLK) then
+		if rising_edge(CLK) then -- Reception start if no communication is active (RX_FLG = 0) and start bit is detected (RX_LINE is low)
 			if(RX_FLG = '0' and RX_LINE = '0') then
 				INDEX<=0;
 				PRSCL<=0;
