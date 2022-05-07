@@ -37,7 +37,7 @@ begin
 					end if;
 			
 		
-				if(PRSCL=2500)then
+				if(PRSCL=2500)then -- check
 					if(INDEX<9)then
 						INDEX<=INDEX+1;
 					else
