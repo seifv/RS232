@@ -1,10 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
-
 use IEEE.NUMERIC_STD.ALL;
-
-
 
 entity UART is
 
@@ -35,7 +31,6 @@ architecture Behavioral of UART is
             tx_data_out    : out std_logic
             );
     end component;
-
 
     component UART_rx
         port(
