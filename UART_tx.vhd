@@ -1,9 +1,6 @@
-
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-
-
 
 entity UART_tx is
 
@@ -18,7 +15,6 @@ entity UART_tx is
         tx_data_out    : out std_logic -- Donnée sortie en parallèle
         );
 end UART_tx;
-
 
 architecture Behavioral of UART_tx is
 
@@ -36,9 +32,6 @@ architecture Behavioral of UART_tx is
     signal start_reset       : std_logic := '0'; -- réinitialisation
 
 begin
-
-
-
 
 -- Ce generateur génere une horloge de UART a chaque fin de compteur des cycle
 -- BAUD_CLK_TICKS = Horloge / Debit Baud
@@ -61,7 +54,6 @@ begin
         end if;
     end process horloge_baud_rate_generator;
 
-
 -- Block responsable de la detection de l'entrée
     tx_start_detector: process(clk)
     begin
@@ -76,8 +68,6 @@ begin
             end if;
         end if;
     end process tx_start_detector;
-
-
 
 -- Compteur de 0 jusqu'à 7 (selon le nombre de bit de la donné) synchronisé avec la nouvelle horloge de baud,
 -- Utiliser pour faire la transformation Parallel (stored_data) serie (tx_data_out)
@@ -95,7 +85,6 @@ begin
 
 
 --  UART_tx_etat represente l'état de bit
-
     UART_tx_etat: process(clk)
     begin
         if rising_edge(clk) then
@@ -148,6 +137,4 @@ begin
             end if;
         end if;
     end process UART_tx_etat;
-
-
 end Behavioral;
