@@ -2,10 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-
-
 entity UART_rx is
-
     generic(
         BAUD_CLK_TICKS_x16: integer := 1); -- BAUD_CLK_TICKS_x16 = (Horloge / Debit Baud*16) (Dans ce cas pour 1 Front montant on avance d'echantillon)
 
@@ -26,11 +23,7 @@ architecture Behavioral of UART_rx is
     signal horloge_baud_rate_x16  : std_logic := '0'; -- Nouvelle Horloge échantillonée
     signal rx_stored_data     : std_logic_vector(7 downto 0) := (others => '0');
 
-
-
 begin
-
-
 
 -- Créer une horloge échantilloné, cette horloge est 16 fois plus rapide que l'horloge de baud
 -- Nombre_de_cycle = (Horloge / Debit Baud*16)
@@ -53,10 +46,8 @@ begin
         end if;
     end process horloge_baud_rate_x16_generator;
 
-
 --  UART_rx_etat represente l'état de bit
 -- four states (IDLE, START, DATA, STOP). See inline comments for more details.
-
     UART_rx_etat: process(clk)
         variable bit_duration_count : integer range 0 to 15 := 0; -- Compteur d'échantillon
         variable bit_count          : integer range 0 to 7  := 0; -- Compteur de bit
@@ -111,7 +102,6 @@ begin
                             end if;
 
                         when STOP =>
-
                             if (bit_duration_count = 15) then      -- fin de un cycle de baud
                                 rx_data_out <= rx_stored_data;     -- Transfert de donné vers l'application eterne
                                 rx_state <= IDLE;						 -- Retour à l'état initial
