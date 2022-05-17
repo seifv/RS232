@@ -3,10 +3,8 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity UART_tx is
-
     generic(
         BAUD_CLK_TICKS: integer := 10); -- BAUD_CLK_TICKS = Horloge / Debit Baud (Dans ce cas 10 Front montant)
-
     port(
         clk            : in  std_logic; -- Horloge Principal
         reset          : in  std_logic;
